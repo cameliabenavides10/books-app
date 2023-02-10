@@ -1,0 +1,20 @@
+[
+    {
+      "title": "Sal",
+      "author": "pizza",
+      "isbn": "8525",
+      "pages": "200" 
+    },
+    {
+        "title": "the alchemist",
+        "author": "paolo soemthing",
+        "isbn": "789",
+        "pages": "500" 
+      },
+      {
+        "title": "harry potter",
+        "author": "jk rowling",
+        "isbn": "123",
+        "pages": "900" 
+      }
+  ]
