@@ -41,7 +41,10 @@ router.post('/', async (req, res) => {
 
 
 // Harrisons api fetch work 
+
 router.get('/', async (req, res) => {
+
+
     const bookURL = 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
     
     // try{
@@ -50,6 +53,8 @@ router.get('/', async (req, res) => {
     //   headers: {
     //     'Content-Type': 'application/json',
     //   },
+
+     
     );
     console.log(bookData.data.items[0].volumeInfo.title)
     return res.send(bookData.data)
@@ -57,6 +62,7 @@ router.get('/', async (req, res) => {
     // catch (err) {
     //     res.status(500).json("WRONG")
     // }
+
 });
 
 
