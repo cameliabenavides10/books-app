@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const { Book } = require('../../models');
-<<<<<<< HEAD
+const axios = require('axios')
 const withAuth = require('../../utils/auth');
 
 
+// to create a new book to the database
 router.post('/', async (req, res) => {
     try {
       const newBook = await Book.create({
         ...req.body,
         // reader_id: req.session.user_id,
       });
-  
       res.status(200).json(newBook);
     } catch (err) {
       res.status(400).json(err);
@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
   });
 
 
+// to delete a certain book by id
   router.delete('/:id', async (req, res) => {
     try {
       const bookData = await Book.destroy({
@@ -26,27 +27,21 @@ router.post('/', async (req, res) => {
         //   reader_id: req.session.user_id,
         }
       });
-  
       if (!bookData) {
         res.status(404).json({ message: 'No book found with this id!' });
         return;
       }
-
       res.status(200).json(bookData);
     } catch (err) {
       res.status(500).json(err);
     }
   });
 
-  module.exports = router;
-=======
-const axios = require('axios')
 
 
 
-
+// Harrisons api fetch work 
 router.get('/', async (req, res) => {
-
     const bookURL = 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
     
     // try{
@@ -55,7 +50,6 @@ router.get('/', async (req, res) => {
     //   headers: {
     //     'Content-Type': 'application/json',
     //   },
-      
     );
     console.log(bookData.data.items[0].volumeInfo.title)
     return res.send(bookData.data)
@@ -63,12 +57,10 @@ router.get('/', async (req, res) => {
     // catch (err) {
     //     res.status(500).json("WRONG")
     // }
-
-
 });
 
 
 
 
 module.exports = router
->>>>>>> 3d4cae87cdbb25f20f02c6d4083794b3518d1954
+      
