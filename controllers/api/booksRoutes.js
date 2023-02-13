@@ -12,7 +12,7 @@ var searchSelector = 'author'
 // var titleSearch = document.querySelector('#titleSearch').value;
 
 // to create a new book to the database
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
       const newBook = await Book.create({
         ...req.body,
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 
 
 // to delete a certain book by id
-  router.delete('/:id', async (req, res) => {
+  router.delete('/:id', withAuth, async (req, res) => {
     try {
       const bookData = await Book.destroy({
         where: {
@@ -46,7 +46,11 @@ router.post('/', async (req, res) => {
 
 
 
-  router.get('/', async (req, res) => {
+
+
+  
+
+  router.get('/', withAuth, async (req, res) => {
 
     var searchTerm = 'mistborn';
 

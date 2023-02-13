@@ -12,7 +12,7 @@ function handleFormSubmit() {
     } else if(titleSearch) {
         getBooks(titleSearch);
     }
-}   ;
+};
 
 const getBooks = async () => {
     const bookURL = 'url'
@@ -29,4 +29,6 @@ const getBooks = async () => {
     catch (err) {
         res.status(500).json(err)
     }
-}
+};
+
+
