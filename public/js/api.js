@@ -12,7 +12,7 @@ function handleFormSubmit() {
     } else if(titleSearch) {
         getBooks(titleSearch);
     }
-}   ;
+};
 
 const getBooks = async () => {
     const bookURL = 'url'

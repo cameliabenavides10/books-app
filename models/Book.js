@@ -12,6 +12,10 @@ Book.init (
             primaryKey: true,
             autoIncrement: true,
         },
+        thumbnail: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,

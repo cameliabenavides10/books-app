@@ -57,16 +57,17 @@ router.post('/', async (req, res) => {
     } else if (searchSelector == 'title') {
      searchTerm = titleSearch;
     }
-    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s&limit=3'
+    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&maxResults=6&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
+
+    const bookData = await axios.get(bookURL, {
+      params: {
+        per_page: 3
+      }
+    });
     
-   
-    const bookData = await axios.get(bookURL);
     console.log(bookURL)
     console.log(bookData.data.items[0].volumeInfo.title)
     return res.send(bookData.data)
-    
-
-
 });
 
 
