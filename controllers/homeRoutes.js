@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { User, Book } = require('../models');
-// const axios = require('axios')
-// const withAuth = require('./utils/auth.js');
+const axios = require('axios')
+const withAuth = require('../utils/auth');
 
 
-// to get all saved books mylib page
+// to get all saved books, mylib page
 router.get('/', async (req, res) => {
     try {
         const bookData = await Book.findAll({
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 
 
 // to find a book based off of its ID, when soneone clicks on the book in their lib
-router.get('/library/:id', async (req, res) => {
+router.get('/books/:id', async (req, res) => {
     try {
         const bookData = await Book.findOne({
             where: {
@@ -37,12 +37,12 @@ router.get('/library/:id', async (req, res) => {
       
         const book = bookData.get({ plain: true });
 
-        res.render('singleBook', {
-            ...book,
-            logged_in: req.session.logged_in
-          });
+        // res.render('singleBook', {
+        //     ...book
+        //     // logged_in: req.session.logged_in
+        //   });
 
-        // res.status(200).json(book);
+        res.status(200).json(book);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -68,7 +68,7 @@ router.get('/booksearch',  (req, res) => {
 
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile', async (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
