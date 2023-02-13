@@ -46,10 +46,7 @@ router.post('/', async (req, res) => {
 
 
 
-
-// Harrisons api fetch work 
-
-router.get('/', async (req, res) => {
+  router.get('/', async (req, res) => {
 
     var searchTerm = 'mistborn';
 
@@ -68,9 +65,9 @@ router.get('/', async (req, res) => {
     console.log(bookData.data.items[0].volumeInfo.title)
     return res.send(bookData.data)
     
+
+
 });
-
-
 
 
 module.exports = router
