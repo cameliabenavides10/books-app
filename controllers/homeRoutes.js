@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Book } = require('../models');
 // const axios = require('axios')
-// const withAuth = require('../../utils/auth');
+// const withAuth = require('./utils/auth.js');
 
 
 // to get all saved books mylib page
@@ -68,7 +68,7 @@ router.get('/booksearch',  (req, res) => {
 
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/profile', async (req, res) => {
     try {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
