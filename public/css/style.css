@@ -1,3 +1,12 @@
+.footer {
+    position: fixed;
+    display:block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
 .login-container {
     width: 400px;
     margin: 0 auto;
