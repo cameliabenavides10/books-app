@@ -2,7 +2,14 @@ const router = require('express').Router();
 const { Book } = require('../../models');
 const axios = require('axios')
 const withAuth = require('../../utils/auth');
-
+// var authorSearch = document.querySelector('#authorSearch').value;
+var titleSearch = 'mistborn'
+var authorSearch = 'Brandon sanderson';
+// authorSearch = authorSearch.split(" ").join('')
+var genreSearch;
+var searchSelector = 'author'
+// var genreSearch = document.querySelector('#genreSearch').value;
+// var titleSearch = document.querySelector('#titleSearch').value;
 
 // to create a new book to the database
 router.post('/', async (req, res) => {
@@ -44,8 +51,16 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
 
+    var searchTerm = 'mistborn';
 
-    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
+    if (searchSelector == 'genre') {
+     searchTerm = genreSearch
+    } else if (searchSelector == 'author') {
+     searchTerm = 'inauthor:' + authorSearch;
+    } else if (searchSelector == 'title') {
+     searchTerm = titleSearch;
+    }
+    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
     
     // try{
     const bookData = await axios.get(bookURL
@@ -56,7 +71,8 @@ router.get('/', async (req, res) => {
 
      
     );
-    console.log(bookData.data.items[0].volumeInfo.title)
+    console.log(bookURL)
+    // console.log(bookData.data.items[0].volumeInfo.title)
     return res.send(bookData.data)
     // }
     // catch (err) {
