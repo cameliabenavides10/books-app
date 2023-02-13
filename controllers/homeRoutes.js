@@ -4,7 +4,7 @@ const axios = require('axios')
 const withAuth = require('../utils/auth');
 
 
-// to get all saved books mylib page
+// to get all saved books, mylib page
 router.get('/', async (req, res) => {
     try {
         const bookData = await Book.findAll({
