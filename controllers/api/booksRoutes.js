@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 // var authorSearch = document.querySelector('#authorSearch').value;
 var titleSearch = 'mistborn'
 var authorSearch = 'Brandon sanderson';
-// authorSearch = authorSearch.split(" ").join('')
+authorSearch = authorSearch.split(" ").join('%20')
 var genreSearch;
 var searchSelector = 'author'
 // var genreSearch = document.querySelector('#genreSearch').value;
@@ -60,25 +60,14 @@ router.get('/', async (req, res) => {
     } else if (searchSelector == 'title') {
      searchTerm = titleSearch;
     }
-    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
+    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s&limit=3'
     
-    // try{
-    const bookData = await axios.get(bookURL
-    //     method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-
-     
-    );
+   
+    const bookData = await axios.get(bookURL);
     console.log(bookURL)
-    // console.log(bookData.data.items[0].volumeInfo.title)
+    console.log(bookData.data.items[0].volumeInfo.title)
     return res.send(bookData.data)
-    // }
-    // catch (err) {
-    //     res.status(500).json("WRONG")
-    // }
-
+    
 });
 
 
