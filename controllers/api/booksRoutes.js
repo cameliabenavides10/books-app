@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Book } = require('../../models');
-const axios = require('axios')
+// const axios = require('axios')
 const withAuth = require('../../utils/auth');
 
 
@@ -40,30 +40,27 @@ router.post('/', async (req, res) => {
 
 
 
-// Harrisons api fetch work 
-
-router.get('/', async (req, res) => {
 
 
-    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
+
+// // Harrisons api fetch work 
+// router.get('/', async (req, res) => {
+//     const bookURL = 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
     
-    // try{
-    const bookData = await axios.get(bookURL
-    //     method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-
-     
-    );
-    console.log(bookData.data.items[0].volumeInfo.title)
-    return res.send(bookData.data)
-    // }
-    // catch (err) {
-    //     res.status(500).json("WRONG")
-    // }
-
-});
+//     // try{
+//     const bookData = await axios.get(bookURL
+//     //     method: 'GET',
+//     //   headers: {
+//     //     'Content-Type': 'application/json',
+//     //   },
+//     );
+//     console.log(bookData.data.items[0].volumeInfo.title)
+//     return res.send(bookData.data)
+//     // }
+//     // catch (err) {
+//     //     res.status(500).json("WRONG")
+//     // }
+// });
 
 
 
