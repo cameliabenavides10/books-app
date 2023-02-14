@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div id="search-container" style="width: 25%">
   <input type="text" id="search-input" placeholder="Select an Author">
   <ul id="search-results"></ul>
@@ -10,53 +9,49 @@
         </div>
 
 
-{{#each books}}
-<div class="book-card-1">
-    <div class="book-card-header">
-        {{book_name}}
+        {{#each bookList as | book |}}
+<div class="book-card-1" id = 'book-info'>
+    <div class="book-card-header" id = 'title'>
+        {{book.title}}
     </div>
-    <div class="card-body" id="book-info">
+    <div class="card-body">
         <p>
             Author:
-            {{author}}
+            {{book.authors}}
+            {{book.id}}
             Pages:
-            {{pages}}
-            Description:
-            {{description}}
+            <a href = '{{book.thumbnail}}'><img src = '{{book.thumbnail}}'></a>
+            
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{book.id}}">
+  Description
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal{{book.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{book.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      
+      </div>
+    </div>
+  </div>
+</div>
         </p>
     </div>
     <div>
-       <button class="save-button" book-index={{@index}}>Save</button> 
+       <button class="save-button" id="save-button" book-id={{book.id}}>Save</button> 
     </div>
 </div>
 {{/each}}
-
-
-
-
-        <script src="js/recs.js"></script>
-=======
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Book Recommendations</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div class="container">
-      {{> book-card}}
-    </div>
-  </body>
-</html>
-
-<div class="book-card-1">
-  <div class="book-card-header">
-    <h5 class="card-title">{{title}}</h5>
-  </div>
-  <div class="card-body">
-    <p class="card-text">{{author}}</p>
-    <p class="card-text">{{description}}</p>
-  </div>
-</div>
->>>>>>> e5c75833e83487b05fe1ef742e346216c7b1247b
+        
+<script src="js/recs.js"></script>

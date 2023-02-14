@@ -20,4 +20,4 @@ const newFormHandler = async (event) => {
     const index = event.target.getAttribute('book-index').value;
     // calls 
     // /api/books/index
-})
+};
