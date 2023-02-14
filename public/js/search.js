@@ -9,6 +9,10 @@
 document.querySelector('.submit-button').addEventListener('click', (event) => {
     event.preventDefault();
     var searchTerm = document.querySelector('#searchTerm').value;
+    if(!searchTerm) {
+        alert('Please input a search criteria!');
+        return
+    }
     console.log(searchTerm)
     // var searchSelector = document.querySelector('#searchSelector').value;
     document.location.replace(`/booksearch/${searchTerm}`)

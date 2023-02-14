@@ -7,11 +7,11 @@
 </form>
 
 {{#each bookList as | book |}}
-<div class="card" style="width: 25%;" id='book-info'>
-  <div class="book-card-header" id='title'>
+<div class="card mb-3 width:25%"  id='book-info'>
+  <div class="card-header" id='title'>
     Title of Book: {{book.title}}
   </div>
-  <div class="card-body">
+  <div class="card-body row">
     <p>Author: {{book.authors}}</p>
     <p>Page Count: {{book.pages}}</p>
     <p>Book Cover: 
@@ -45,7 +45,7 @@
     </div>
 
   </div>
-  <div>
+  <div class = 'card-footer'>
     <button type = 'button' class=" d-flex justify-content-center btn btn-secondary save-button btn-lg btn-block" id="save-button" book-id={{book.id}}>Save Book to Library</button>
 
   </div>
