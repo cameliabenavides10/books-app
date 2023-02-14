@@ -23,7 +23,7 @@ router.post('/save', withAuth, async (req, res) => {
       }
     });
 
-    console.log(bookToSave);
+    console.log("LINE 26 POTATO CHIPS", bookToSave);
 
     const savedBook = await Book.create({
       title: bookToSave.data.volumeInfo.title,
