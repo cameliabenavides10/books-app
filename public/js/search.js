@@ -9,7 +9,7 @@
 document.querySelector('.submit-button').addEventListener('click', (event) => {
     event.preventDefault();
     var searchTerm = document.querySelector('#searchTerm').value;
-    if(!searchTerm) {
+    if (!searchTerm) {
         alert('Please input a search criteria!');
         return
     }
@@ -22,10 +22,10 @@ document.querySelector('.submit-button').addEventListener('click', (event) => {
 const newFormHandler = async (event) => {
     event.preventDefault();
     const bookId = event.target.getAttribute('book-id');
-    console.log({bookId});
+    console.log({ bookId });
     const response = await fetch(`/api/books/save`, {
         method: 'POST',
-        body: JSON.stringify({bookId}),
+        body: JSON.stringify({ bookId }),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -33,10 +33,10 @@ const newFormHandler = async (event) => {
     if (response.ok) {
         console.log("OK!");
         document.location.replace('/results');
-      } else {
+    } else {
         console.log("ERROR!");
         alert('Failed to create project');
-      }
+    }
 };
 
 

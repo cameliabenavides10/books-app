@@ -31,10 +31,6 @@ router.post('/save', withAuth, async (req, res) => {
       isbn: bookToSave.data.volumeInfo.industryIdentifiers[1].identifier,
       thumbnail: bookToSave.data.volumeInfo.imageLinks.smallThumbnail,
       pages: bookToSave.data.volumeInfo.pageCount,
-      
-      
-
-
       reader_id: req.session.user_id,
     });
     res.status(200).json(savedBook);
@@ -70,17 +66,17 @@ router.delete('/:id', async (req, res) => {
       where: {
         id: req.params.id
         //   reader_id: req.session.user_id,
-        }
-      });
-      if (!bookData) {
-        res.status(404).json({ message: 'No book found with this id!' });
-        return;
       }
-      res.status(200).json(bookData);
-    } catch (err) {
-      res.status(500).json(err);
+    });
+    if (!bookData) {
+      res.status(404).json({ message: 'No book found with this id!' });
+      return;
     }
-  });
+    res.status(200).json(bookData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 
