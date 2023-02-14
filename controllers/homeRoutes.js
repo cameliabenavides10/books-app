@@ -131,6 +131,7 @@ router.get('/login', (req, res) => {
         title: bookData.data.items[i].volumeInfo.title,
         description: bookData.data.items[i].volumeInfo.description,
         authors: bookData.data.items[i].volumeInfo.authors,
+        pages: bookData.data.items[i].volumeInfo.pageCount,
         thumbnail: bookData.data.items[i].volumeInfo.imageLinks.smallThumbnail,
         id: bookData.data.items[i].id
       });
@@ -181,7 +182,7 @@ router.get('/login', (req, res) => {
   searchedBooks = [];
 
 
-  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchTerm}&maxResults=2&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
+  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchTerm}&maxResults=5&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
       const bookData = await axios.get(bookURL);
       console.log(bookURL)
   console.log(bookData.data.items[0])
@@ -215,7 +216,8 @@ router.get('/login', (req, res) => {
 router.get('/recommendations', (req, res) => {
 
 
-  res.render('recommendations', {bookList:searchedBooks, logged_in:true});
+  res.render('recommendations', {bookList:searchedBooks,
+  logged_in:true});
 });
 
 

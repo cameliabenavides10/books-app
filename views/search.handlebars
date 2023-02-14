@@ -1,53 +1,54 @@
 <form>
   <div class="form-group">
-    <label for="searchInput"id = 'searchInput'>Search Input:</label>
-    <input  class="form-control" id="searchTerm"  placeholder="Enter Search Terms for the Book Database!">
+    <label for="searchInput" id='searchInput'>Search Input:</label>
+    <input class="form-control width: 100px" id="searchTerm" placeholder="Enter Search Terms for the Book Database!">
   </div>
   <button type="submit" class="btn btn-primary submit-button">Submit</button>
 </form>
 
 {{#each bookList as | book |}}
-<div class="book-card-1" id = 'book-info'>
-    <div class="book-card-header" id = 'title'>
-        {{book.title}}
-    </div>
-    <div class="card-body" id="book-info">
-        <p>
-            Author:
-            {{book.authors}}
-            {{book.id}}
-            Pages:
-            <a href = '{{book.thumbnail}}'><img src = '{{book.thumbnail}}'></a>
-            
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{book.id}}">
-  Description
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal{{book.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>{{book.description}}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      
-      </div>
-    </div>
+<div class="card mb-3 width:25%"  id='book-info'>
+  <div class="card-header" id='title'>
+    Title of Book: {{book.title}}
   </div>
-</div>
-        </p>
+  <div class="card-body row">
+    <p>Author: {{book.authors}}</p>
+    <p>Page Count: {{book.pages}}</p>
+    <p>Book Cover: 
+      <a href='{{book.thumbnail}}'><img src='{{book.thumbnail}}'></a>
+    </p>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{book.id}}">
+      Description
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal{{book.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>{{book.description}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-       <button class="save-button" id="save-button" book-id={{book.id}}>Save</button> 
-    </div>
+
+  </div>
+  <div class = 'card-footer'>
+    <button type = 'button' class=" d-flex justify-content-center btn btn-secondary save-button btn-lg btn-block" id="save-button" book-id={{book.id}}>Save Book to Library</button>
+
+  </div>
 </div>
 {{/each}}
 
