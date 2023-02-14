@@ -1,6 +1,6 @@
-{{#each books as | book |}}
-<div class="book-card-1" id = 'book-info'>
-    <div class="book-card-header" id = 'title'>
+{{!-- {{#each books as | book |}}
+<div class="book-card-1" id='book-info'>
+    <div class="book-card-header" id='title'>
         {{book.dataValues.title}}
     </div>
     <div class="card-body">
@@ -12,13 +12,13 @@
             ISBN:
             {{book.dataValues.isbn}}
             Book Cover:
-            <a href = '{{book.dataValues.thumbnail}}'><img src = '{{book.dataValues.thumbnail}}'></a>
+            <a href='{{book.dataValues.thumbnail}}'><img src='{{book.dataValues.thumbnail}}'></a>
         </p>
-     </div>
-     <button class = 'delete-button' bID = {{book.dataValues.id}}>Delete</button>
+    </div>
+    <button class='delete-button' bID={{book.dataValues.id}}>Delete</button>
 </div>
 {{/each}}
-<script src="js/delete.js"></script>
+<script src="js/delete.js"></script> --}}
 
 {{#each books as | book |}}
 <div class="card mb-3 book-card-1" id="book-info">
