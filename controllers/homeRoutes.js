@@ -135,6 +135,7 @@ router.get('/login', (req, res) => {
         title: bookData.data.items[i].volumeInfo.title,
         description: bookData.data.items[i].volumeInfo.description,
         authors: bookData.data.items[i].volumeInfo.authors,
+        pages: bookData.data.items[i].volumeInfo.pageCount,
         thumbnail: bookData.data.items[i].volumeInfo.imageLinks.smallThumbnail,
         id: bookData.data.items[i].id
       });
