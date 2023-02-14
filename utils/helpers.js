@@ -19,4 +19,9 @@ module.exports = {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
   },
+
+  json: (context) => {
+    
+    return JSON.stringify(context).replace(/"/g, '\\"');
+  }
 };

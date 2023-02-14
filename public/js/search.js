@@ -17,21 +17,25 @@ document.querySelector('.submit-button').addEventListener('click', (event) => {
 
 const newFormHandler = async (event) => {
     event.preventDefault();
-    const title = document.querySelector('#title').value
-    // const search = document.querySelector('#book-info').value.trim();
-    const response = await fetch(`/api/books`, {
+    const bookId = event.target.getAttribute('book-id');
+    console.log({bookId});
+    const response = await fetch(`/api/books/save`, {
         method: 'POST',
-        body: ({ title }),
+        body: JSON.stringify({bookId}),
         headers: {
             'Content-Type': 'application/json',
         },
     });
     if (response.ok) {
+        console.log("OK!");
         document.location.replace('/results');
       } else {
+        console.log("ERROR!");
         alert('Failed to create project');
       }
 };
-document
-    .querySelector('#save-button')
-    .addEventListener('click', newFormHandler);
+
+
+
+document.querySelectorAll('.save-button').forEach(elem => elem?.addEventListener('click', newFormHandler));
+
