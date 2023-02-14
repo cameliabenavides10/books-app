@@ -70,17 +70,17 @@ router.delete('/:id', async (req, res) => {
       where: {
         id: req.params.id
         //   reader_id: req.session.user_id,
+        }
+      });
+      if (!bookData) {
+        res.status(404).json({ message: 'No book found with this id!' });
+        return;
       }
-    });
-    if (!bookData) {
-      res.status(404).json({ message: 'No book found with this id!' });
-      return;
+      res.status(200).json(bookData);
+    } catch (err) {
+      res.status(500).json(err);
     }
-    res.status(200).json(bookData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+  });
 
 
 
@@ -88,63 +88,6 @@ router.delete('/:id', async (req, res) => {
 
 
 
-// router.get('/booksearch/:searchTerm', withAuth, async (req, res) => {
-  
-//   // var titleSearch = 'mistborn'
-//   // var authorSearch = 'Brandon sanderson';
-//   // authorSearch = authorSearch.split(" ").join('%20')
-//   // var genreSearch;
-//   // var searchSelector = 'title';
-//   // var searchTerm
-
-
-//   // if (searchSelector == 'genre') {
-//   //   searchTerm = genreSearch
-//   // } else if (searchSelector == 'author') {
-//   //   searchTerm = 'inauthor:' + authorSearch;
-//   // } else if (searchSelector == 'title') {
-//   //   searchTerm = titleSearch;
-//   // }
-//   const bookURL = `https://www.googleapis.com/books/v1/volumes?q=${req.params.searchTerm}&maxResults=6&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
-//   bookList = []
-//   const bookData = await axios.get(bookURL, {
-//     params: {
-//       per_page: 3
-//     }
-//   });
-
-//   console.log(bookURL)
-//   console.log(bookData.data.items[0])
-//   const bookCount = Math.min(bookData.data.items.length, 5);
-//   for (let i = 0; i < bookCount; i++) {
-//     bookList.push({
-//       title: bookData.data.items[i].volumeInfo.title,
-//       description: bookData.data.items[i].volumeInfo.description,
-//       authors: bookData.data.items[i].volumeInfo.authors,
-//       thumbnail: bookData.data.items[i].volumeInfo.imageLinks.smallThumbnail
-//     });
-//   };
-//   req.session.save(() => {
-//     req.session.bookData = bookData.data;
-//     req.session.logged_in = true;
-//     req.session.books = [];
-
-
-//     // for (let i = 0; i < bookCount; i++) {
-//     //   bookList.push(bookData.data.items[i]);
-//     // };
-//   });
-
-//   res.redirect('/api/books/results')
-//   // res.render('search', { bookList })
-//   // return res.send(bookList)
-//   // return res.send(bookData.data.items)
-// });
-
-
-// router.get('/results', async (req, res)=> {
-//   res.render('search', {bookList})
-// })
 
 module.exports = router
 

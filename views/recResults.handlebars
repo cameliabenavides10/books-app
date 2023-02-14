@@ -1,0 +1,22 @@
+
+{{#each books}}
+<div class="book-card-1">
+    <div class="book-card-header">
+        {{book_name}}
+    </div>
+    <div class="card-body" id="book-info">
+        <p>
+            Author:
+            {{author}}
+            Pages:
+            {{pages}}
+            Description:
+            {{description}}
+        </p>
+    </div>
+    <div>
+       <button class="save-button" >Save</button> 
+    </div>
+</div>
+{{/each}}
+
