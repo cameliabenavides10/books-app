@@ -19,3 +19,27 @@
 </div>
 {{/each}}
 <script src="js/delete.js"></script>
+
+{{#each books as | book |}}
+<div class="card mb-3 book-card-1" id="book-info">
+    <div class="card-header" id="title">{{book.dataValues.title}}</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <p class="card-text">
+                    <strong>Author:</strong> {{book.dataValues.author}}<br>
+                    <strong>Pages:</strong> {{book.dataValues.pages}}<br>
+                    <strong>ISBN:</strong> {{book.dataValues.isbn}}<br>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{book.dataValues.thumbnail}}" alt="Book cover">
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-danger delete-button" bID="{{book.dataValues.id}}">Delete</button>
+    </div>
+</div>
+{{/each}}
+<script src="js/delete.js"></script>
