@@ -1,5 +1,5 @@
 <div id="search-container" style="width: 25%">
-  <input type="text" id="search-input" placeholder="Select an Author">
+  <input type="text" id="search-input" placeholder="What genre would you like to explore?">
   <ul id="search-results"></ul>
 </div>
   <div>
@@ -18,8 +18,9 @@
         <p>
             Author:
             {{book.authors}}
-            {{book.id}}
+            {{!-- {{book.id}} --}}
             Pages:
+            {{book.pages}}
             <a href = '{{book.thumbnail}}'><img src = '{{book.thumbnail}}'></a>
             
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{book.id}}">
