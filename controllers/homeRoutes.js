@@ -57,9 +57,9 @@ router.get('/recommendations',  (req, res) => {
 
 
 // to get to the book search page 
-router.get('/booksearch',  (req, res) => {
+router.get('/search',  (req, res) => {
 
-  res.render('booksearch');
+  res.render('search');
 });
 
 

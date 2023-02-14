@@ -1,15 +1,30 @@
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Search Input:</label>
+    <input  class="form-control" id="searchTerm"  placeholder="Enter Search Terms for the Book Database!">
+  </div>
+   <div class="form-group">
+    <label for="exampleFormControlSelect1">Select either Title, Author, or Genre</label>
+    <select class="form-control" id="searchSelector">
+      <option>Title</option>
+      <option>Author</option>
+      <option>Genre</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary submit-button">Submit</button>
+</form>
 
-{{#each books}}
+{{#each bookList}}
 <div class="book-card-1">
     <div class="book-card-header">
-        {{book_name}}
+        {{title}}
     </div>
     <div class="card-body">
         <p>
             Author:
-            {{author}}
+            {{authors}}
             Pages:
-            {{pages}}
+            {{thumbnail}}
             Description:
             {{description}}
         </p>
