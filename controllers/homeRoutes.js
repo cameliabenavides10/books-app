@@ -60,12 +60,6 @@ router.get('/search', withAuth,  (req, res) => {
 });
 
 
-// to get to the library page 
-router.get('/library', (req, res) => {
-  const bookToSave = req.session.books[index]
-
-  res.render('library', bookToSave);
-});
 
 
 
@@ -187,7 +181,7 @@ router.get('/login', (req, res) => {
   searchedBooks = [];
 
 
-  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=2&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
+  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchTerm}&maxResults=2&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
       const bookData = await axios.get(bookURL);
       console.log(bookURL)
   console.log(bookData.data.items[0])
@@ -221,7 +215,7 @@ router.get('/login', (req, res) => {
 router.get('/recommendations', (req, res) => {
 
 
-  res.render('recommendations', {bookList:searchedBooks});
+  res.render('recommendations', {bookList:searchedBooks, logged_in:true});
 });
 
 
