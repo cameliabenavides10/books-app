@@ -1,0 +1,36 @@
+<div id="search-container" style="width: 25%">
+  <input type="text" id="search-input" placeholder="Select an Author">
+  <ul id="search-results"></ul>
+</div>
+  <div>
+       <button id="search-button">Search</button> 
+    </div>
+ <div class="flex-column" id="books-container">
+        </div>
+
+
+{{#each books}}
+<div class="book-card-1">
+    <div class="book-card-header">
+        {{book_name}}
+    </div>
+    <div class="card-body" id="book-info">
+        <p>
+            Author:
+            {{author}}
+            Pages:
+            {{pages}}
+            Description:
+            {{description}}
+        </p>
+    </div>
+    <div>
+       <button class="save-button" book-index={{@index}}>Save</button> 
+    </div>
+</div>
+{{/each}}
+
+
+
+
+        <script src="js/recs.js"></script>

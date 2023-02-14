@@ -70,47 +70,17 @@ router.post('/', withAuth, async (req, res) => {
 
   
 
-  router.get('/', withAuth, async (req, res) => {
-
-    var searchTerm = 'mistborn';
-
-    if (searchSelector == 'genre') {
-     searchTerm = genreSearch
-    } else if (searchSelector == 'author') {
-     searchTerm = 'inauthor:' + authorSearch;
-    } else if (searchSelector == 'title') {
-     searchTerm = titleSearch;
-    }
-    const bookURL = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&maxResults=6&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s'
-
-    const bookData = await axios.get(bookURL, {
-      params: {
-        per_page: 3
-      }
-    });
-    
-    console.log(bookURL)
-    console.log(bookData.data.items[0].volumeInfo.title)
-   
-    req.session.save(() => { 
-      req.session.bookData = bookData.data;
-      req.session.logged_in = true;
-      req.session.books = [];
-      const bookCount = Math.min(bookData.data.items.length, 5);
-      for (let i = 0; i < bookCount; index++) {
-      // req.session.title = bookData.data.items[i].volumeInfo.title,
-      // req.session.author = bookData.data.items[i].volumeInfo.authors,
-      // req.session.description = bookData.data.items[i].volumeInfo.description,
-      // req.session.thumbmail = bookData.data.items[i].volumeInfo.imageLinks.smallThumbnail,
-      req.session.books.push(bookData.data.items[i]);
-    };
-    });
-    return res.send(bookData.data.items)
-   
-    
+ 
 
 
-});
+
+
+
+
+
+
+
+
 
 
 module.exports = router
