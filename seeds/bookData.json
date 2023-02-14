@@ -3,18 +3,22 @@
       "title": "Sal",
       "author": "pizza",
       "isbn": "8525",
-      "pages": "200" 
+      "pages": "200",
+      "reader_id": 1 
     },
     {
         "title": "the alchemist",
         "author": "paolo soemthing",
         "isbn": "789",
-        "pages": "500" 
+        "pages": "500",
+        "reader_id": 2
       },
       {
         "title": "harry potter",
         "author": "jk rowling",
         "isbn": "123",
-        "pages": "900" 
+        "pages": "900" ,
+        "reader_id": 3
+
       }
   ]

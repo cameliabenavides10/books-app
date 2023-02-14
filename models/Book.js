@@ -26,11 +26,11 @@ Book.init (
         },
         isbn: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         pages: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         reader_id: {
             type: DataTypes.INTEGER,

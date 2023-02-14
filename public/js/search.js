@@ -1,17 +1,23 @@
+// document.querySelectorAll('.save-button').addEventListener('click', (event) => {
+//     event.preventDefault();
+//     const index = event.target.getAttribute('book-index').value;
+//     // calls 
+//     // /api/books/index
+// })
 
+
+document.querySelector('.submit-button').addEventListener('click', (event) => {
+    event.preventDefault();
+    var searchTerm = document.querySelector('#searchTerm').value;
+    console.log(searchTerm)
+    // var searchSelector = document.querySelector('#searchSelector').value;
+    document.location.replace(`/booksearch/${searchTerm}`)
+});
 
 
 const newFormHandler = async (event) => {
     event.preventDefault();
-    const search = document.querySelector('#book-info').value.trim();
-    const response = await fetch(`recs/:query`, {
-        method: 'POST',
-        body: JSON.stringify({ search }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-};
-    document
-    .querySelector('#save-button')
-    .addEventListener('click', newFormHandler);
+    const index = event.target.getAttribute('book-index').value;
+    // calls 
+    // /api/books/index
+})

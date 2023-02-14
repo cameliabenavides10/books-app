@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="search-container" style="width: 25%">
   <input type="text" id="search-input" placeholder="Select an Author">
   <ul id="search-results"></ul>
@@ -34,3 +35,28 @@
 
 
         <script src="js/recs.js"></script>
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Book Recommendations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      {{> book-card}}
+    </div>
+  </body>
+</html>
+
+<div class="book-card-1">
+  <div class="book-card-header">
+    <h5 class="card-title">{{title}}</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{author}}</p>
+    <p class="card-text">{{description}}</p>
+  </div>
+</div>
+>>>>>>> e5c75833e83487b05fe1ef742e346216c7b1247b
