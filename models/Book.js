@@ -12,10 +12,10 @@ Book.init (
             primaryKey: true,
             autoIncrement: true,
         },
-        // thumbnail: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true,
-        // },
+        thumbnail: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -25,12 +25,12 @@ Book.init (
             allowNull: false,
         },
         isbn: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         pages: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         reader_id: {
             type: DataTypes.INTEGER,

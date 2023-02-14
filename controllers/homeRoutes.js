@@ -57,9 +57,9 @@ router.get('/recommendations',  (req, res) => {
 
 
 // to get to the book search page 
-router.get('/search',  (req, res) => {
+router.get('/search', withAuth,  (req, res) => {
 
-  res.render('search');
+  res.render('search', {logged_in: true});
 });
 
 
@@ -127,8 +127,8 @@ router.get('/login', (req, res) => {
       }
     });
   
-    console.log(bookURL)
-    console.log(bookData.data.items[0])
+    // console.log(bookURL)
+    // console.log(bookData.data.items[0])
     const bookCount = Math.min(bookData.data.items.length, 5);
     for (let i = 0; i < bookCount; i++) {
       bookList.push({
@@ -136,11 +136,10 @@ router.get('/login', (req, res) => {
         description: bookData.data.items[i].volumeInfo.description,
         authors: bookData.data.items[i].volumeInfo.authors,
         thumbnail: bookData.data.items[i].volumeInfo.imageLinks.smallThumbnail,
-        id: i
+        id: bookData.data.items[i].id
       });
     };
     req.session.save(() => {
-      req.session.bookData = bookData.data;
       req.session.logged_in = true;
       req.session.books = [];
   
@@ -156,11 +155,24 @@ router.get('/login', (req, res) => {
     // return res.send(bookData.data.items)
   });
   
+
+  //localStorage.setItem("bookList", JSON.stringify(bookList));
+
   
-  router.get('/results', async (req, res)=> {
-    res.render('search', {bookList})
+  router.get('/results', withAuth, async (req, res)=> {
+    res.render('search', {bookList, logged_in: true})
   })
   
- 
+ router.get('/library', withAuth, async (req, res) => {
+  const userData = await User.findByPk(req.session.user_id, {
+    attributes: { exclude: ['password'] },
+    include: [{ model: Book }],
+  });
+
+    res.render('library', {
+      books: userData.books,
+      logged_in: true
+    })
+ })
 
 module.exports = router

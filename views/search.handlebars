@@ -3,36 +3,28 @@
     <label for="searchInput"id = 'searchInput'>Search Input:</label>
     <input  class="form-control" id="searchTerm"  placeholder="Enter Search Terms for the Book Database!">
   </div>
-   <div class="form-group">
-    <label for="exampleFormControlSelect1">Select either Title, Author, or Genre</label>
-    <select class="form-control" id="searchSelector">
-      <option>Title</option>
-      <option>Author</option>
-      <option>Genre</option>
-    </select>
-  </div>
   <button type="submit" class="btn btn-primary submit-button">Submit</button>
 </form>
 
-{{#each bookList}}
+{{#each bookList as | book |}}
 <div class="book-card-1" id = 'book-info'>
     <div class="book-card-header" id = 'title'>
-        {{title}}
+        {{book.title}}
     </div>
     <div class="card-body">
         <p>
             Author:
-            {{authors}}
-            {{id}}
+            {{book.authors}}
+            {{book.id}}
             Pages:
-            <a href = '{{thumbnail}}'><img src = '{{thumbnail}}'></a>
+            <a href = '{{book.thumbnail}}'><img src = '{{book.thumbnail}}'></a>
             
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{book.id}}">
   Description
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{book.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,7 +34,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>{{description}}</p>
+        <p>{{book.description}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -54,7 +46,7 @@
         </p>
     </div>
     <div>
-       <button id="save-button" book-index={{@index}}>Save</button> 
+       <button class="save-button" id="save-button" book-id={{book.id}}>Save</button> 
     </div>
 </div>
 {{/each}}

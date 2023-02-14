@@ -8,17 +8,39 @@ var bookList = []
 // to create a new book to the database
 //post('/:index');
 
-router.post('/:index', withAuth, async (req, res) => {
+router.post('/save', withAuth, async (req, res) => {
   try {
+    console.log("BOOK ROUTE!");
 
-    const bookToSave = bookList[req.params.index];
-    console.log(bookList[req.params.index])
+    const bookId = req.body.bookId;
+    console.log(bookId);
+
+    const bookURL = `https://www.googleapis.com/books/v1/volumes/${bookId}?q=maxResults=1&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
+    bookList = []
+    const bookToSave = await axios.get(bookURL, {
+      params: {
+        per_page: 3
+      }
+    });
+
+    console.log(bookToSave);
+
     const savedBook = await Book.create({
-      title: bookList[req.params.index].volumeInfo.title,
+      title: bookToSave.data.volumeInfo.title,
+      author: bookToSave.data.volumeInfo.authors[0],
+      isbn: bookToSave.data.volumeInfo.industryIdentifiers[1].identifier,
+      thumbnail: bookToSave.data.volumeInfo.imageLinks.smallThumbnail,
+      pages: bookToSave.data.volumeInfo.pageCount,
+      
+      
+
+
       reader_id: req.session.user_id,
     });
     res.status(200).json(savedBook);
   } catch (err) {
+    console.error("WE GOT AN ERROR!");
+    console.error(err);
     res.status(400).json(err);
   }
 });
@@ -29,9 +51,9 @@ router.post('/:index', withAuth, async (req, res) => {
 // bookToSave would be the body of post request
 router.post('/', withAuth, async (req, res) => {
   try {
+    console.log(req.body.book);
     const newBook = await Book.create({
-      ...req.body,
-
+      ...req.body.book,
       reader_id: req.session.user_id,
     });
     res.status(200).json(newBook);
@@ -42,7 +64,7 @@ router.post('/', withAuth, async (req, res) => {
 
 
 // to delete a certain book by id
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const bookData = await Book.destroy({
       where: {
