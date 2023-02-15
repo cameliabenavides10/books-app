@@ -22,11 +22,11 @@
 
 <body>
     <div class="container-fluid">
-        <header class="display-flex justify-space-between align-center p-2 bg-info">
+        <header class="display-flex justify-space-between align-center p-2 ">
             <h1>
                 <a href="/">Welcome to BetterReads!</a>
             </h1>
-            <p>This site is in no way affiliated with GoodReads</p>
+            <p style="color: #f2f2f2;">This site is in no way affiliated with GoodReads</p>
             <ul class="nav justify-content-end">
                 {{#if logged_in}}
                 <li class="nav-item">
@@ -51,7 +51,7 @@
             <!-- Render the sub layout -->
             {{{ body }}}
         </main>
-        <footer class='bg-info justify-content-center display-block footer'>
+        <footer class=' justify-content-center display-block footer'>
             <a class='display-block' href='http://www.github.com/harrisonboatman'>Harrison Boatman Github<i
                     class="fa fa-github"></i></a>
             <a class='display-block' href='http://www.github.com/Matthewsince97'>Matthew Vasquez Github<i
@@ -73,4 +73,5 @@
     {{/if}}
 </body>
 <script src="js/search.js"></script>
+
 </html>
