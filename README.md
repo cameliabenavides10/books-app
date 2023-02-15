@@ -1,7 +1,4 @@
-![sceenshot](./assets/png/logo-color.png)
-
-![sceenshot]
-
+![sceenshot](./assets/png/logo-color2.png)
 
 
 ## Books App
@@ -22,9 +19,7 @@
 
 
 ## APIs Used
->
-
->
+>https://console.cloud.google.com/marketplace/product/google/books.googleapis.com?q=search&referrer=search&project=expanded-port-377419
 
 ## WireFrame
 ![original-project-outline]
@@ -49,7 +44,7 @@
 
 ## Latest Development Changes
 ```
-git clone 
+Deployed: https://better-books10.herokuapp.com
 ```
 
 ## Future Features
@@ -65,7 +60,6 @@ These are some of our purposed additions:
 - [Geeksforgeeks](https://www.geeksforgeeks.org/javascript)
 - [Trello](https://trello.com/b/RMK5YooL/utabc-project-2)
 - [Handlebars](https://handlebarsjs.com)
-- [Kaggle](https://www.kaggle.com/datasets)
 
 ## License
 - [MIT](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt)
