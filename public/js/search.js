@@ -19,7 +19,7 @@ document.querySelector('.submit-button').addEventListener('click', (event) => {
 });
 
 
-const newFormHandler = async (event) => {
+const saveHandler = async (event) => {
     event.preventDefault();
     const bookId = event.target.getAttribute('book-id');
     console.log({ bookId });
@@ -41,5 +41,5 @@ const newFormHandler = async (event) => {
 
 
 
-document.querySelectorAll('.save-button').forEach(elem => elem?.addEventListener('click', newFormHandler));
+document.querySelectorAll('.save-button').forEach(elem => elem?.addEventListener('click', saveHandler));
 

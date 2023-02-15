@@ -3,6 +3,8 @@ const { User, Book } = require('../models');
 const axios = require('axios')
 const withAuth = require('../utils/auth');
 var searchedBooks = [];
+require('dotenv').config();
+
 
 // to get all saved books, mylib page
 router.get('/', async (req, res) => {
@@ -115,7 +117,7 @@ router.get('/booksearch/:searchTerm', withAuth, async (req, res) => {
   // } else if (searchSelector == 'title') {
   //   searchTerm = titleSearch;
   // }
-  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=${req.params.searchTerm}&maxResults=6&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
+  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=${req.params.searchTerm}&maxResults=6&key=`+process.env.API_KEY
   bookList = []
   const bookData = await axios.get(bookURL, {
     params: {
@@ -186,7 +188,7 @@ router.get('/recommendation/:searchTerm', withAuth, async (req, res) => {
   searchedBooks = [];
 
 
-  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchTerm}&maxResults=9&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
+  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchTerm}&maxResults=9&key=`+process.env.API_KEY
   const bookData = await axios.get(bookURL);
   console.log(bookURL)
   console.log(bookData.data.items[0])
@@ -199,7 +201,8 @@ router.get('/recommendation/:searchTerm', withAuth, async (req, res) => {
       authors: bookData.data.items[i].volumeInfo.authors[0],
       thumbnail: (bookData.data.items[i].volumeInfo.imageLinks ? bookData.data.items[i].volumeInfo.imageLinks.smallThumbnail : "https://images.unsplash.com/photo-1508169351866-777fc0047ac5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGxhY2Vob2xkZXIlMjBpbWFnZSUyMGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"),
       pages: ( (bookData.data.items[i].volumeInfo.pageCount > 0) ? bookData.data.items[i].volumeInfo.pageCount : "N/A"),
-      id: i
+      // id: i
+      id: bookData.data.items[i].id
     });
   };
   req.session.save(() => {
