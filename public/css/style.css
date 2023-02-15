@@ -186,7 +186,15 @@ h1 {
 	} 
 
 
-  .carousel-item{
+  /* .carousel-item{
     margin: 0 40% !important;
   
-  }
+  } */
+
+  .carousel-inner > .item {
+
+    -webkit-transition: 0.1s ease-in-out left;
+    -moz-transition: 0.1s ease-in-out left;
+    -o-transition: 0.1s ease-in-out left;
+    transition: 0.1s ease-in-out left;
+}
