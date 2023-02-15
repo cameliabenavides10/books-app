@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Define the welcome message
     var data = {
-      welcomeMsg: "Welcome to BetterReads!"
+      welcomeMsg: "Welcome to BetterReadsssss!"
     };
   
     // Compile the Handlebars template

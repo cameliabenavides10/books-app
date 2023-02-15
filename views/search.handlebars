@@ -1,55 +1,67 @@
-<form>
-  <div class="form-group">
-    <label for="searchInput" id='searchInput'>Search Input:</label>
-    <input class="form-control width: 100px" id="searchTerm" placeholder="Enter Search Terms for the Book Database!">
-  </div>
-  <button type="submit" class="btn btn-primary submit-button">Submit</button>
-</form>
+<p style="text-align:center; font-size: 22px; font-family: Montserrat;">On BetterReads, you are able to look up over 7,000 books and add them to your own personal library to keep track of all the books that you wish to read! Just search a book, and if you like what you see, go ahead and click "Save To Library".</p>
+<div id="search-container" style="width: 25%" class="mx-auto">
+  <input type="text" id="searchTerm" placeholder="Enter your Search Criteria Here!">
+  <ul id="search-results"></ul>
+</div>
+<div>
+  <button class=" mx-auto d-flex justify-content-center btn btn-secondary btn-md btn-block submit-button"
+    >Search</button>
+</div>
+<div class="flex-column" id="books-container">
+</div>
+<br>
+<div class="d-flex flex-wrap justify-content-center book-card-1">
+  {{#each bookList as | book |}}
+  <div id='book-info' class="d-inline p-3">
+    <div class="book-card-header " id='title'>
+      {{!-- {{book.title}} --}}
 
-{{#each bookList as | book |}}
-<div class="card mb-3 width:25%"  id='book-info'>
-  <div class="card-header" id='title'>
-    Title of Book: {{book.title}}
-  </div>
-  <div class="card-body row">
-    <p>Author: {{book.authors}}</p>
-    <p>Page Count: {{book.pages}}</p>
-    <p>Book Cover: 
-      <a href='{{book.thumbnail}}'><img src='{{book.thumbnail}}'></a>
-    </p>
+      <div class="card-body col d-flex justify-content-evenly flex-wrap" style="text-align:center">
+        <p> <span style="font-size: 20px">  {{book.title}} </span> <br>
+         
+          <span class="authors-break">
+            {{book.authors}} </span>
+          <br>
+          Pages:
+          {{book.pages}}<br>
+          <a href='{{book.thumbnail}}'><img src='{{book.thumbnail}}'></a><br>
+          <br>
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+            data-target="#exampleModal{{book.id}}">
+            Summary
+          </button>
+          <button class=" justify-content-center btn btn-secondary save-button btn-sm "
+            id="save-button" book-id={{book.id}}>Save to Library</button>
+          <!-- Modal -->
+        <div class="modal fade" id="exampleModal{{book.id}}" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>{{book.description}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{book.id}}">
-      Description
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal{{book.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>{{book.description}}</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+              </div>
+            </div>
           </div>
         </div>
+        </p>
       </div>
     </div>
-
+    <div class='card-footer '>
+      {{!-- <button class="d-flex justify-content-center btn btn-secondary save-button btn-sm btn-block"
+        class="save-button" id="save-button" book-id={{book.id}}>Save to Library</button> --}}
+    </div>
   </div>
-  <div class = 'card-footer'>
-    <button type = 'button' class=" d-flex justify-content-center btn btn-secondary save-button btn-lg btn-block" id="save-button" book-id={{book.id}}>Save Book to Library</button>
-
-  </div>
+  {{/each}}
 </div>
-{{/each}}
-
+{{!-- <script src="js/recs.js"></script> --}}
 
