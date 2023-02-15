@@ -4,7 +4,7 @@
   <ul id="search-results"></ul>
 </div>
 <div>
-  <button class=" mx-auto d-flex justify-content-center btn btn-secondary save-button btn-md btn-block"
+  <button class=" mx-auto d-flex justify-content-center btn btn-secondary btn-md btn-block"
     id="search-button">Search</button>
 </div>
 <div class="flex-column" id="books-container">
@@ -30,7 +30,7 @@
             data-target="#exampleModal{{book.id}}">
             Summary
           </button>
-          <button class=" justify-content-center btn btn-secondary save-button btn-sm " class="save-button"
+          <button class=" justify-content-center btn btn-secondary save-button btn-sm "
             id="save-button" book-id={{book.id}}>Save to Library</button>
           <!-- Modal -->
         <div class="modal fade" id="exampleModal{{book.id}}" tabindex="-1" role="dialog"
@@ -64,3 +64,4 @@
   {{/each}}
 </div>
 <script src="js/recs.js"></script>
+

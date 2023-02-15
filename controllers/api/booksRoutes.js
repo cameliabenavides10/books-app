@@ -33,6 +33,8 @@ router.post('/save', withAuth, async (req, res) => {
       pages: bookToSave.data.volumeInfo.pageCount,
       reader_id: req.session.user_id,
     });
+
+    console.log("AFTER THE THINGY")
     res.status(200).json(savedBook);
   } catch (err) {
     console.error("WE GOT AN ERROR!");
