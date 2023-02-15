@@ -184,3 +184,9 @@ h1 {
 		right: 30px;
 		margin-top: -50px;
 	} 
+
+
+  .carousel-item{
+    margin: 0 40% !important;
+  
+  }
