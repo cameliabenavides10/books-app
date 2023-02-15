@@ -6,6 +6,26 @@
     width: 100%;
     color: white;
     text-align: center;
+    --bs-bg-opacity: 1;
+    background-color: #2b6777 !important;
+}
+a{
+  color: #f2f2f2;
+}
+
+
+button{
+  background-color: #52ab98!important;
+  border-color: #52ab98!important;
+}
+
+.nav-link{
+  color: #f2f2f2;
+}
+
+header{
+  background-color: #2b6777 !important;
+  --bs-bg-opacity: 1;
 }
 .login-container {
     width: 400px;
@@ -47,4 +67,120 @@
     cursor: pointer;
   }
 
+  img { 
+ width: 22vh;
+ align-content: center;
+ min-height: 35vh;
+ max-height: 35vh;
+  }
 
+  .book-card-1{
+padding: 10px;
+  }
+
+  #book-info{
+    padding:10px;
+    border: 10px !important;
+  }
+
+  .book-card-header{
+    text-align: center;
+  }
+
+  
+
+
+body {
+	background: #c8d8e4;
+	font-family: "Comfortaa", sans-serif;
+	position: relative;
+}
+
+		
+     
+		.icons {
+			margin-top: 12px;
+			display: inline-block;
+			font-size: 20px;
+		}
+	
+
+* {
+	box-sizing: border-box;
+}
+
+.main-content {
+	text-align: center;
+	text-transform: uppercase;
+	scroll-snap-type: y mandatory;
+	position: relative;
+	height: 100vh;
+	overflow-y: scroll;
+}
+
+.hover,
+.word,
+h1 {
+	cursor: pointer;
+}
+
+h1 {
+	position: relative;
+	color: #f2f2f2;
+	font: 900 40px Montserrat;
+	text-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.concept {
+	position: relative;
+	padding: 5em;
+	height: 100vh;
+	overflow: hidden;
+	scroll-snap-align: center;
+}
+
+	
+  
+  :hover:before {
+		opacity: 0.5;
+	}
+ 
+	h1 {
+		transition: 0.5s ease;
+		letter-spacing: 25px;
+	}
+
+
+
+	.hover {
+		z-index: 1;
+	}
+	.hover-1:hover ~ h1 {
+		left: 30px;
+		margin-top: -10px;
+	}
+	.hover-2:hover ~ h1 {
+		margin-top: -10px;
+	}
+	.hover-3:hover ~ h1 {
+		right: 30px;
+		margin-top: -10px;
+	}
+	.hover-4:hover ~ h1 {
+		left: 30px;
+	}
+	.hover-6:hover ~ h1 {
+		right: 30px;
+	}
+	.hover-7:hover ~ h1 {
+		left: 30px;
+		margin-top: -50px;
+	}
+	.hover-8:hover ~ h1 {
+		margin-top: -50px;
+	}
+	.hover-9:hover ~ h1 {
+		right: 30px;
+		margin-top: -50px;
+	} 

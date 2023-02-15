@@ -186,19 +186,19 @@ router.get('/recommendation/:searchTerm', withAuth, async (req, res) => {
   searchedBooks = [];
 
 
-  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchTerm}&maxResults=5&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
+  const bookURL = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchTerm}&maxResults=9&key=AIzaSyD7Dwq_e3cP_InmvZFjC5IJcefiw-bXM8s`
   const bookData = await axios.get(bookURL);
   console.log(bookURL)
   console.log(bookData.data.items[0])
-  const bookCount = Math.min(bookData.data.items.length, 5);
+  const bookCount = Math.min(bookData.data.items.length, 9);
 
   for (let i = 0; i < bookCount; i++) {
     searchedBooks.push({
       title: bookData.data.items[i].volumeInfo.title,
       description: bookData.data.items[i].volumeInfo.description,
-      authors: bookData.data.items[i].volumeInfo.authors,
+      authors: bookData.data.items[i].volumeInfo.authors[0],
       thumbnail: (bookData.data.items[i].volumeInfo.imageLinks ? bookData.data.items[i].volumeInfo.imageLinks.smallThumbnail : "https://images.unsplash.com/photo-1508169351866-777fc0047ac5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGxhY2Vob2xkZXIlMjBpbWFnZSUyMGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"),
-      pages: ( (bookData.data.items[i].volumeInfo.pageCount > 0) ? bookData.data.items[i].volumeInfo.pageCount : "unknown count"),
+      pages: ( (bookData.data.items[i].volumeInfo.pageCount > 0) ? bookData.data.items[i].volumeInfo.pageCount : "N/A"),
       id: i
     });
   };
